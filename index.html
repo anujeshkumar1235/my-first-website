@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>My First App</title>
 
     <style>
         body {
@@ -16,7 +17,6 @@
             border-radius: 20px;
             max-width: 400px;
             margin: auto;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
         h1 {
@@ -35,20 +35,37 @@
             padding: 14px 25px;
             border-radius: 10px;
             font-size: 16px;
-            cursor: pointer;
         }
 
-        button:hover {
-            background: #0d4fa8;
+        .menu {
+            display: grid;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .menu button {
+            width: 100%;
+            font-size: 17px;
         }
     </style>
-.menu {
-    display: grid;
-    gap: 12px;
-    margin-top: 20px;
-}
+</head>
 
-.menu button {
-    width: 100%;
-    font-size: 17px;
-}
+<body>
+
+    <div class="app">
+        <h1>My First App 🚀</h1>
+
+        <p>स्वागत है! यह मेरी पहली वेबसाइट है।</p>
+
+        <button>Start</button>
+
+        <div class="menu">
+            <button>🤖 AI Chat</button>
+            <button>🖼️ Image AI</button>
+            <button>🎤 Voice AI</button>
+            <button>⚙️ Settings</button>
+        </div>
+    </div>
+
+</body>
+</html>
