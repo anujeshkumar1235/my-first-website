@@ -34,7 +34,6 @@ function openAI() {
     `;
 }
 
-async function sendMessage() {
     const message = document.getElementById("message").value.trim();
     const answer = document.getElementById("answer");
 
