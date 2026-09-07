@@ -284,6 +284,7 @@ function startVoiceAI() {
         console.log("Speech started:", data.answer);
 
         try {
+            console.log("Voice AI: API request शुरू");
             const response = await fetch("/api/chat", {
                 method: "POST",
                 headers: {
