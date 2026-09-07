@@ -296,6 +296,7 @@ const timeout = setTimeout(() => controller.abort(), 30000);
             });
 
             const data = await response.json();
+            console.log("VOICE RESPONSE:", data);
             console.log("VOICE AI DATA:", data);
 
             if (!response.ok) {
