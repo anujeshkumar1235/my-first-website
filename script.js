@@ -317,15 +317,42 @@ function startVoiceAI() {
     recognition.lang = "hi-IN";
     recognition.interimResults = false;
 
-    recognition.onresult = function(event) {
+    recognition.onresult = async function(event) {
         const text = event.results[0][0].transcript;
 
         document.getElementById("voiceText").innerText =
-            "आपने कहा: " + text;
+            "आपने कहा: " + text + "\n\nAI जवाब: सोच रहा है...";
+
+        try {
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    message: text
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "AI error");
+            }
+
+            document.getElementById("voiceText").innerText =
+                "आपने कहा: " + text + "\n\nAI जवाब: " + data.answer;
+
+        } catch (error) {
+            document.getElementById("voiceText").innerText =
+                "AI से जवाब नहीं मिल पाया।";
+
+            console.error(error);
+        }
     };
 
-    recognition.onerror = function() {
-        alert("Voice input काम नहीं कर पाया।");
+    recognition.onerror = function(event) {
+        alert("Voice error: " + event.error);
     };
 
     recognition.start();
