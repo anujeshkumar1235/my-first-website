@@ -203,8 +203,13 @@ async function generateImage() {
                 alt="AI Generated Image"
                 style="
                     width: 100%;
-                    margin-top: 15px;
-                    border-radius: 15px;
+max-width: 600px;
+height: auto;
+margin-top: 15px;
+border-radius: 15px;
+display: block;
+margin-left: auto;
+margin-right: auto;
                 "
             >
         `;
