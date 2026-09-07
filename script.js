@@ -285,7 +285,9 @@ function startVoiceAI() {
 
         try {
             console.log("Voice AI: API request शुरू");
-            const response = await fetch("/api/chat", {
+            const controller = new AbortController();
+const timeout = setTimeout(() => controller.abort(), 30000);
+            const response = await fetchsignal: controller.signal("/api/chat", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
