@@ -257,7 +257,6 @@ function toggleSound() {
         alert("🔇 Sound OFF");
     }
 }
-}
 function changeLanguage() {
     const language = document.getElementById("language").value;
 
