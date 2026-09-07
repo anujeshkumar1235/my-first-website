@@ -27,6 +27,9 @@ function openAI() {
         </button>
 
         <div id="chat"></div>
+        <button onclick="clearChat()">
+    🗑️ Clear Chat
+</button>
 
         <button onclick="location.reload()">
             🏠 Home
