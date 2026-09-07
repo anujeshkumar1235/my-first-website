@@ -36,9 +36,18 @@ export default async function handler(req, res) {
 
     console.log("AI RESPONSE:", JSON.stringify(data));
 
-    const answer = data.output_text;
+    const answer =
+  data.output_text ||
+  data.output
+    ?.filter(item => item.type === "message")
+    ?.flatMap(item => item.content || [])
+    ?.filter(content => content.type === "output_text")
+    ?.map(content => content.text)
+    ?.join("\n") ||
+  "";
 
-    if (!answer) {
+if (!answer) {
+    
       return res.status(200).json({
         answer: "AI ने कोई टेक्स्ट जवाब नहीं दिया।"
       });
