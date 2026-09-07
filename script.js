@@ -1,6 +1,17 @@
 function testScript() {
     console.log("JavaScript file connected!");
 }
+function openSettings() {
+    document.querySelector(".app").innerHTML = `
+        <h1>⚙️ Settings</h1>
+
+        <p>App की settings यहाँ से manage करें।</p>
+
+        <button onclick="location.reload()">
+            🏠 Home
+        </button>
+    `;
+}
 
 function openImageAI() {
     document.querySelector(".app").innerHTML = `
