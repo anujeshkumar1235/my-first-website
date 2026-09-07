@@ -41,7 +41,7 @@ function openAI() {
 
 async function sendMessage() {
     const message = document.getElementById("message").value.trim();
-    const answer = document.getElementById("answer");
+    const chat = document.getElementById("chat");
 
     if (message === "") {
         alert("पहले अपना सवाल लिखें।");
