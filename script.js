@@ -68,7 +68,7 @@ chat.innerHTML += `<p id="loading"><b>AI:</b> सोच रहा है...</p>`
             throw new Error(data.error || "कुछ समस्या हुई");
         }
 
-        answer.innerText = data.answer;
+        document.getElementById("loading").innerHTML = `<b>AI:</b> ${data.answer}`;
 
     } catch (error) {
         answer.innerText = "AI से जवाब नहीं मिल पाया।";
