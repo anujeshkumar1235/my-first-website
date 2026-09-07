@@ -27,24 +27,30 @@ function openAI() {
         </button>
 
         <div id="chat"></div>
+
         <button onclick="clearChat()">
-    🗑️ Clear Chat
-</button>
+            🗑️ Clear Chat
+        </button>
 
         <button onclick="location.reload()">
             🏠 Home
         </button>
-                document.getElementById("message").addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-                sendMessage();
-            }
-        });
     `;
+
+    loadChatHistory();
+
+    document.getElementById("message").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
 }
 
 async function sendMessage() {
-    const message = document.getElementById("message").value.trim();
+    const messageInput = document.getElementById("message");
     const chat = document.getElementById("chat");
+
+    const message = messageInput.value.trim();
 
     if (message === "") {
         alert("पहले अपना सवाल लिखें।");
@@ -52,7 +58,9 @@ async function sendMessage() {
     }
 
     chat.innerHTML += `<p><b>आप:</b> ${message}</p>`;
-chat.innerHTML += `<p id="loading"><b>AI:</b> सोच रहा है...</p>`;
+    chat.innerHTML += `<p id="loading"><b>AI:</b> सोच रहा है...</p>`;
+
+    messageInput.value = "";
 
     try {
         const response = await fetch("/api/chat", {
@@ -71,13 +79,33 @@ chat.innerHTML += `<p id="loading"><b>AI:</b> सोच रहा है...</p>`
             throw new Error(data.error || "कुछ समस्या हुई");
         }
 
-        document.getElementById("loading").innerHTML = `<b>AI:</b> ${data.answer}`;
+        document.getElementById("loading").innerHTML =
+            `<b>AI:</b> ${data.answer}`;
+
+        saveChatHistory();
 
     } catch (error) {
-        answer.innerText = "AI से जवाब नहीं मिल पाया।";
+        document.getElementById("loading").innerText =
+            "AI से जवाब नहीं मिल पाया।";
+
         console.error(error);
     }
 }
+
+function saveChatHistory() {
+    const chat = document.getElementById("chat").innerHTML;
+    localStorage.setItem("aiChatHistory", chat);
+}
+
+function loadChatHistory() {
+    const savedChat = localStorage.getItem("aiChatHistory");
+
+    if (savedChat) {
+        document.getElementById("chat").innerHTML = savedChat;
+    }
+}
+
 function clearChat() {
     document.getElementById("chat").innerHTML = "";
+    localStorage.removeItem("aiChatHistory");
 }
