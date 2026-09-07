@@ -31,6 +31,11 @@ function openAI() {
         <button onclick="location.reload()">
             🏠 Home
         </button>
+                document.getElementById("message").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        });
     `;
 }
 
