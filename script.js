@@ -184,8 +184,8 @@ function startVoiceAI() {
     recognition.onresult = async function(event) {
         const text = event.results[0][0].transcript;
 
-        document.getElementById("voiceText").innerText =
-            "आपने कहा: " + text;
+     document.getElementById("voiceText").innerText =
+    "आपने कहा: " + text + "\n\nAI जवाब: सोच रहा है...";
 
         try {
             const response = await fetch("/api/chat", {
