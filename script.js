@@ -2,6 +2,41 @@ function testScript() {
     console.log("JavaScript file connected!");
 }
 
+function openImageAI() {
+    document.querySelector(".app").innerHTML = `
+        <h1>🖼️ Image AI</h1>
+
+        <p>AI से image बनाने के लिए अपना idea लिखें।</p>
+
+        <input
+            type="text"
+            id="imagePrompt"
+            placeholder="जैसे: पहाड़ों में सुंदर सूर्योदय"
+            style="
+                width: 90%;
+                padding: 14px;
+                border-radius: 10px;
+                border: 1px solid #ccc;
+                font-size: 16px;
+                margin-bottom: 12px;
+            "
+        >
+
+        <br>
+
+        <button onclick="generateImage()">
+            🖼️ Image बनाएं
+        </button>
+
+        <div id="imageResult"></div>
+
+        <br>
+
+        <button onclick="location.reload()">
+            🏠 Home
+        </button>
+    `;
+}
 function openAI() {
     document.querySelector(".app").innerHTML = `
         <h1>🤖 AI Chat</h1>
@@ -134,3 +169,48 @@ function startVoice() {
 
     recognition.start();
 }
+async function generateImage() {
+    const prompt = document.getElementById("imagePrompt").value.trim();
+    const result = document.getElementById("imageResult");
+
+    if (prompt === "") {
+        alert("पहले image का idea लिखें।");
+        return;
+    }
+
+    result.innerHTML = "<p>🖼️ Image बन रही है...</p>";
+
+    try {
+        const response = await fetch("/api/image", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                prompt: prompt
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Image नहीं बन पाई");
+        }
+
+        result.innerHTML = `
+            <img
+                src="${data.image}"
+                alt="AI Generated Image"
+                style="
+                    width: 100%;
+                    margin-top: 15px;
+                    border-radius: 15px;
+                "
+            >
+        `;
+
+    } catch (error) {
+        result.innerHTML = "<p>❌ Image नहीं बन पाई।</p>";
+        console.error(error);
+    }
+    }
