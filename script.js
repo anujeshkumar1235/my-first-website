@@ -17,6 +17,9 @@ function openSettings() {
     <option value="en">English</option>
 </select>
         <select id="language" onchange="changeLanguage()">
+    <option value="hi">हिंदी</option>
+    <option value="en">English</option>
+</select>
         <button onclick="location.reload()">
             🏠 Home
         </button>
