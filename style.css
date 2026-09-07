@@ -68,3 +68,15 @@ button:hover {
     background: #e8f1ff;
 
 }
+body.dark-mode {
+    background: #222;
+}
+
+body.dark-mode .app {
+    background: #333;
+    color: white;
+}
+
+body.dark-mode p {
+    color: #ddd;
+}
