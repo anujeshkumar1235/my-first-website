@@ -79,8 +79,12 @@ async function sendMessage() {
             throw new Error(data.error || "कुछ समस्या हुई");
         }
 
-        document.getElementById("loading").innerHTML =
-            `<b>AI:</b> ${data.answer}`;
+        const formattedAnswer = data.answer
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\n/g, "<br>");
+
+document.getElementById("loading").innerHTML =
+    `<b>AI:</b> ${formattedAnswer}`;
 
         saveChatHistory();
 
