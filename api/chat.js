@@ -17,15 +17,10 @@ export default async function handler(req, res) {
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: "gpt-5.6-luna",
-        tools: [
-          {
-            type: "web_search"
-          }
-        ],
-        input: message
-      })
-    });
+    model: "gpt-5.6-luna",
+    input: message,
+    max_output_tokens: 1000
+})
 
     const data = await response.json();
 
