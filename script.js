@@ -296,6 +296,7 @@ function startVoiceAI() {
             });
 
             const data = await response.json();
+            console.log("VOICE AI DATA:", data);
 
             if (!response.ok) {
                 throw new Error(data.error || "AI error");
