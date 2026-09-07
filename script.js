@@ -9,6 +9,9 @@ function openSettings() {
         <button onclick="toggleDarkMode()">
     🌙 Dark Mode
 </button>
+<button onclick="toggleSound()">
+    🔊 Sound On/Off
+</button>
 
         <button onclick="location.reload()">
             🏠 Home
@@ -235,4 +238,7 @@ margin-right: auto;
     }
 function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
+}
+function toggleSound() {
+    alert("Sound setting चालू/बंद करने का option है।");
 }
