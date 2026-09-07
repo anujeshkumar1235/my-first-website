@@ -302,6 +302,7 @@ function startVoiceAI() {
 
             document.getElementById("voiceText").innerText =
                 "आपने कहा: " + text + "\n\nAI जवाब: " + data.answer;
+            speakAI(data.answer);
 
         } catch (error) {
             document.getElementById("voiceText").innerText =
