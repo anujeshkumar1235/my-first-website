@@ -299,7 +299,11 @@ const timeout = setTimeout(() => controller.abort(), 30000);
             console.log("VOICE AI DATA:", data);
 
             if (!response.ok) {
-                throw new Error(data.error || "AI error");
+                throw new Error(
+    typeof data.error === "string"
+        ? data.error
+        : JSON.stringify(data.error)
+);
             }
 
             document.getElementById("voiceText").innerText =
