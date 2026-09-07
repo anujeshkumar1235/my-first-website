@@ -78,3 +78,6 @@ chat.innerHTML += `<p id="loading"><b>AI:</b> सोच रहा है...</p>`
         console.error(error);
     }
 }
+function clearChat() {
+    document.getElementById("chat").innerHTML = "";
+}
