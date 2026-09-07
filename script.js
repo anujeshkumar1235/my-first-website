@@ -13,6 +13,10 @@ function openSettings() {
     🔊 Sound On/Off
 </button>
 
+    <option value="hi">हिंदी</option>
+    <option value="en">English</option>
+</select>
+        <select id="language" onchange="changeLanguage()">
         <button onclick="location.reload()">
             🏠 Home
         </button>
@@ -241,4 +245,13 @@ function toggleDarkMode() {
 }
 function toggleSound() {
     alert("Sound setting चालू/बंद करने का option है।");
+}
+function changeLanguage() {
+    const language = document.getElementById("language").value;
+
+    if (language === "en") {
+        alert("English selected");
+    } else {
+        alert("हिंदी चुनी गई");
+    }
 }
