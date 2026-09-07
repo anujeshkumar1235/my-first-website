@@ -308,7 +308,7 @@ const timeout = setTimeout(() => controller.abort(), 30000);
 
         } catch (error) {
     document.getElementById("voiceText").innerText =
-        "AI Error: " + error.message;
+        "AI Error: " + JSON.stringify(error);
 
     console.error(error);
         }
