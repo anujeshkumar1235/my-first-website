@@ -113,3 +113,21 @@ function clearChat() {
     document.getElementById("chat").innerHTML = "";
     localStorage.removeItem("aiChatHistory");
 }
+function startVoice() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+
+    recognition.lang = "hi-IN";
+    recognition.interimResults = false;
+
+    recognition.onresult = function(event) {
+        const text = event.results[0][0].transcript;
+
+        document.getElementById("message").value = text;
+    };
+
+    recognition.onerror = function() {
+        alert("Voice input काम नहीं कर पाया।");
+    };
+
+    recognition.start();
+}
