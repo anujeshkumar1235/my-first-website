@@ -32,6 +32,7 @@ export default async function handler(req, res) {
   data.output_text ||
   data.output?.[0]?.content?.[0]?.text ||
   "AI ने कोई जवाब नहीं दिया।";
+    console.log("AI RESPONSE:", JSON.stringify(data));
 
 res.status(200).json({
   answer: answer
