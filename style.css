@@ -15,18 +15,24 @@ body {
 }
 
 h1 {
-    color: #222;
+    color: #1769e0;
 }
 
 input {
     box-sizing: border-box;
+    width: 90%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 12px;
 }
 
 button {
     padding: 12px 20px;
     border: none;
     border-radius: 10px;
-    background: #222;
+    background: #1769e0;
     color: white;
     font-size: 16px;
     cursor: pointer;
