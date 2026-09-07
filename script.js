@@ -307,8 +307,8 @@ const timeout = setTimeout(() => controller.abort(), 30000);
             speakAI(data.answer);
 
         } catch (error) {
-    document.getElementById("voiceText").innerText =
-        "AI Error: " + JSON.stringify(error);
+     document.getElementById("voiceText").innerText =
+    "AI Error: " + error.message;
 
     console.error(error);
         }
