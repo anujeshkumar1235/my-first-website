@@ -280,14 +280,12 @@ function startVoiceAI() {
 
         document.getElementById("voiceText").innerText =
             "आपने कहा: " + text + "\n\nAI जवाब: सोच रहा है...";
-        speakAI(data.answer);
-        console.log("Speech started:", data.answer);
 
         try {
             console.log("Voice AI: API request शुरू");
             const controller = new AbortController();
 const timeout = setTimeout(() => controller.abort(), 30000);
-            const response = await fetchsignal: controller.signal("/api/chat", {
+            const response = await fetch("/api/chat", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
