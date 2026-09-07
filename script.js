@@ -175,16 +175,38 @@ function clearChat() {
     document.getElementById("chat").innerHTML = "";
     localStorage.removeItem("aiChatHistory");
 }
-function startVoice() {
+function startVoiceAI() {
     const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
 
     recognition.lang = "hi-IN";
     recognition.interimResults = false;
 
-    recognition.onresult = function(event) {
+    recognition.onresult = async function(event) {
         const text = event.results[0][0].transcript;
 
-        document.getElementById("message").value = text;
+        document.getElementById("voiceText").innerText =
+            "आपने कहा: " + text;
+
+        try {
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    message: text
+                })
+            });
+
+            const data = await response.json();
+
+            document.getElementById("voiceText").innerText =
+                "आपने कहा: " + text + "\n\nAI: " + data.answer;
+
+        } catch (error) {
+            document.getElementById("voiceText").innerText =
+                "AI से जवाब नहीं मिल पाया।";
+        }
     };
 
     recognition.onerror = function() {
