@@ -269,3 +269,39 @@ function changeLanguage() {
 function showAbout() {
     alert("My First App 🚀\nयह मेरी पहली AI Web App है।");
 }
+function openVoiceAI() {
+    document.querySelector(".app").innerHTML = `
+        <h1>🎤 Voice AI</h1>
+
+        <p>बोलकर AI से सवाल पूछें।</p>
+
+        <button onclick="startVoiceAI()">
+            🎤 बोलना शुरू करें
+        </button>
+
+        <p id="voiceText"></p>
+
+        <button onclick="location.reload()">
+            🏠 Home
+        </button>
+    `;
+}
+function startVoiceAI() {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+
+    recognition.lang = "hi-IN";
+    recognition.interimResults = false;
+
+    recognition.onresult = function(event) {
+        const text = event.results[0][0].transcript;
+
+        document.getElementById("voiceText").innerText =
+            "आपने कहा: " + text;
+    };
+
+    recognition.onerror = function() {
+        alert("Voice input काम नहीं कर पाया।");
+    };
+
+    recognition.start();
+}
