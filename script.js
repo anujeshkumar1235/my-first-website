@@ -6,6 +6,9 @@ function openSettings() {
         <h1>⚙️ Settings</h1>
 
         <p>App की settings यहाँ से manage करें।</p>
+        <button onclick="toggleDarkMode()">
+    🌙 Dark Mode
+</button>
 
         <button onclick="location.reload()">
             🏠 Home
@@ -230,3 +233,6 @@ margin-right: auto;
         console.error(error);
     }
     }
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+}
