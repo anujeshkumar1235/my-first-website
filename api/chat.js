@@ -28,9 +28,14 @@ export default async function handler(req, res) {
       return res.status(response.status).json(data);
     }
 
-    res.status(200).json({
-      answer: data.output_text
-    });
+    const answer =
+  data.output_text ||
+  data.output?.[0]?.content?.[0]?.text ||
+  "AI ने कोई जवाब नहीं दिया।";
+
+res.status(200).json({
+  answer: answer
+});
 
   } catch (error) {
     res.status(500).json({
