@@ -280,6 +280,7 @@ function startVoiceAI() {
 
         document.getElementById("voiceText").innerText =
             "आपने कहा: " + text + "\n\nAI जवाब: सोच रहा है...";
+        speakAI(data.answer);
 
         try {
             const response = await fetch("/api/chat", {
@@ -314,4 +315,13 @@ function startVoiceAI() {
     };
 
     recognition.start();
+}
+function speakAI(text) {
+    const speech = new SpeechSynthesisUtterance(text);
+
+    speech.lang = "hi-IN";
+    speech.rate = 1;
+    speech.pitch = 1;
+
+    window.speechSynthesis.speak(speech);
 }
