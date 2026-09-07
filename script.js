@@ -13,13 +13,13 @@ function openSettings() {
     🔊 Sound On/Off
 </button>
 
-    <option value="hi">हिंदी</option>
-    <option value="en">English</option>
-</select>
         <select id="language" onchange="changeLanguage()">
     <option value="hi">हिंदी</option>
     <option value="en">English</option>
 </select>
+<button onclick="showAbout()">
+    ℹ️ About App
+</button>
         <button onclick="location.reload()">
             🏠 Home
         </button>
@@ -257,4 +257,7 @@ function changeLanguage() {
     } else {
         alert("हिंदी चुनी गई");
     }
+}
+function showAbout() {
+    alert("My First App 🚀\nयह मेरी पहली AI Web App है।");
 }
