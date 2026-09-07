@@ -247,7 +247,16 @@ function toggleDarkMode() {
     document.body.classList.toggle("dark-mode");
 }
 function toggleSound() {
-    alert("Sound setting चालू/बंद करने का option है।");
+    const soundOn = localStorage.getItem("soundOn") !== "false";
+
+    localStorage.setItem("soundOn", !soundOn);
+
+    if (!soundOn) {
+        alert("🔊 Sound ON");
+    } else {
+        alert("🔇 Sound OFF");
+    }
+}
 }
 function changeLanguage() {
     const language = document.getElementById("language").value;
