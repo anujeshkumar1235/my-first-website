@@ -20,12 +20,6 @@ h1 {
 
 input {
     box-sizing: border-box;
-    width: 90%;
-    padding: 14px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    margin-bottom: 12px;
 }
 
 button {
@@ -43,11 +37,18 @@ button:hover {
     opacity: 0.85;
 }
 
-#answer {
+#chat {
     margin-top: 20px;
-    padding: 15px;
-    background: #f2f4f7;
-    border-radius: 10px;
     text-align: left;
-    line-height: 1.6;
+}
+
+#chat p {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 12px;
+    line-height: 1.5;
+}
+
+#chat p b {
+    color: #1769e0;
 }
