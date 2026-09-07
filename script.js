@@ -26,7 +26,7 @@ function openAI() {
             भेजें
         </button>
 
-        <p id="answer"></p>
+        <div id="chat"></div>
 
         <button onclick="location.reload()">
             🏠 Home
