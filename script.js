@@ -25,6 +25,9 @@ function openAI() {
         <button onclick="sendMessage()">
             भेजें
         </button>
+        <button onclick="startVoice()">
+    🎤 Voice
+</button>
 
         <div id="chat"></div>
 
