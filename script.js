@@ -212,6 +212,9 @@ function startVoiceAI() {
     recognition.onerror = function() {
         alert("Voice input काम नहीं कर पाया।");
     };
+    recognition.onerror = function(event) {
+    alert("Voice error: " + event.error);
+};
 
     recognition.start();
 }
