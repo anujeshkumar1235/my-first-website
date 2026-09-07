@@ -281,6 +281,7 @@ function startVoiceAI() {
         document.getElementById("voiceText").innerText =
             "आपने कहा: " + text + "\n\nAI जवाब: सोच रहा है...";
         speakAI(data.answer);
+        console.log("Speech started:", data.answer);
 
         try {
             const response = await fetch("/api/chat", {
