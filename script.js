@@ -48,7 +48,8 @@ async function sendMessage() {
         return;
     }
 
-    answer.innerText = "AI सोच रहा है...";
+    chat.innerHTML += `<p><b>आप:</b> ${message}</p>`;
+chat.innerHTML += `<p id="loading"><b>AI:</b> सोच रहा है...</p>`;
 
     try {
         const response = await fetch("/api/chat", {
